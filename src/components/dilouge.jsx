@@ -1,6 +1,9 @@
 "use client"; // This is a client component
 import React, { useState } from "react";
-import Button from "@/common/button";
+import Image from 'next/image';
+import { Button2 } from "@/common/index";
+import {CloseIcon} from "@/components/assets";
+import ReportsData from "./reportdata"; 
 
 const ReportDialog = ({ onClose }) => {
   const handleClose = () => {
@@ -40,6 +43,18 @@ const ReportDialog = ({ onClose }) => {
       name: "RUR L2_(Exclude_NonWorking Days)_4_1_2021_4_1_2021.csv",
       date: "15:00 PM 19.07.2021",
     },
+    {
+      name: "RUR L2_(Exclude_NonWorking Days)_4_1_2021_4_1_2021.csv",
+      date: "15:00 PM 19.07.2021",
+    },
+    {
+      name: "RUR L2_(Exclude_NonWorking Days)_4_1_2021_4_1_2021.csv",
+      date: "15:00 PM 19.07.2021",
+    },
+    {
+      name: "RUR L2_(Exclude_NonWorking Days)_4_1_2021_4_1_2021.csv",
+      date: "15:00 PM 19.07.2021",
+    },
     // Add more reports here...
   ];
 
@@ -55,6 +70,12 @@ const ReportDialog = ({ onClose }) => {
     setCurrentPage(pageNumber);
   };
 
+  const handleDownload = (report) => {
+    // Code to trigger the download of the report
+    console.log("Downloading report:", report.name);
+  };
+
+
   console.log("Current page:", currentPage);
 
   return (
@@ -68,35 +89,21 @@ const ReportDialog = ({ onClose }) => {
           Recently Generated Reports
         </div>
         <div>
-          <Button onClick={handleClose}>Close</Button>
+          <Button2 onClick={handleClose} className={'bg-transparent'}>
+            <Image src={CloseIcon} alt="Close Icon" width={50} height={50} />
+          </Button2>
         </div>
       </div>
 
-      <table className="flex flex-col w-full">
-        <thead className=" bg-slate-200">
-          <tr className="flex lg:space-x-72 md:space-x-64 sm:space-x-40 space-x-24 mx-9">
-            <th>Date</th>
-            <th>Report Name</th>
-            <th>Download</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentReports.map((report, index) => (
-            <tr key={index} className="flex flex-row lg:space-x-20 space-x-2 mt-6 mx-5">
-              <td>{report.date}</td>
-              <td>{report.name}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="w-full h-1 bg-slate-400 mt-64"></div>
+      <ReportsData reports={currentReports} handleDownload={handleDownload} />
+      <div className="w-full h-1 bg-slate-400 mt-56"></div>
       <div className="paginator flex flex-row space-x-2 items-center justify-center my-3 mx-3 ">
-        <button
+        <Button2
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
         >
           Previous
-        </button>
+        </Button2>
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
           <button
             key={page}
@@ -109,12 +116,12 @@ const ReportDialog = ({ onClose }) => {
           </button>
         ))}
 
-        <button
+        <Button2
           onClick={() => paginate(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
           Next
-        </button>
+        </Button2>
 
         <div className="flex flex-row pl-9 space-x-3">
           <div>Rows per page:</div>
