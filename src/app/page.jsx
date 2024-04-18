@@ -1,11 +1,11 @@
 "use client"; // This is a client component 
 import React from 'react'
-import DilougeBox from '../components/dilouge'
+import DilougeOpen from '../components/dilogeopen'
 
 export default function page() {
   return (
     <div>
-      <DilougeBox />
+      <DilougeOpen />
     </div>
   )
 }
