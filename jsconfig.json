@@ -3,5 +3,9 @@
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": [
+    "./src/**/*",
+    "./src/app/layout.js" // Add the missing file path here
+  ]
 }
