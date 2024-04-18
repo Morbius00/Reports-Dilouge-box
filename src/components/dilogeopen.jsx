@@ -14,9 +14,9 @@ export default function DialogOpen() {
   };
 
   return (
-    <div className='flex flex-col  my-[20%] items-center justify-center'>
-      <div className='text-center text-2xl font-bold'>Hello Master, click here to check the reports</div>
-      <Button  onClick={handleOpenDialog}>Reports</Button>
+    <div className='flex flex-col  lg:my-[20%] my-[35%] items-center justify-center'>
+      <div className='text-center lg:text-2xl md:text-xl text-md font-bold my-9'>Hello Master, click here to check the reports</div>
+      <Button onClick={handleOpenDialog}>Reports</Button>
       {dialogOpen && <ReportDialog onClose={handleCloseDialog} />}
     </div>
   );

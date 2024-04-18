@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = ({ onClick, disabled, children, className }) => {
   return (
-    <div className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  w-96 rounded'>
+    <div className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4  w-32 rounded'>
     <button onClick={onClick} disabled={disabled} className={className}  >
       {children}
     </button>
