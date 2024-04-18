@@ -5,3 +5,4 @@ export default function dilouge() {
     <div className='text-xl text-center font-bold'>dilouge</div>
   )
 }
+
