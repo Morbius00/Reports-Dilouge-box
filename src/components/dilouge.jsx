@@ -1,9 +1,9 @@
 "use client"; // This is a client component
 import React, { useState } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 import { Button2 } from "@/common/index";
-import {CloseIcon} from "@/components/assets";
-import ReportsData from "./reportdata"; 
+import { CloseIcon, NextArrow, PreviousArrow } from "@/components/assets";
+import ReportsData from "./reportdata";
 
 const ReportDialog = ({ onClose }) => {
   const handleClose = () => {
@@ -75,13 +75,12 @@ const ReportDialog = ({ onClose }) => {
     console.log("Downloading report:", report.name);
   };
 
-
   console.log("Current page:", currentPage);
 
   return (
     <div
       className="dialog relative bg-white border border-gray-300 rounded-xl shadow-md lg:w-[900px] md:w-[800px] sm:w-[600px] w-[410px] h-auto"
-      style={{ position: 'relative', top: '-200px' }}
+      style={{ position: "relative", top: "-200px" }}
     >
       <div className="flex justify-center items-center lg:space-x-[250px] md:space-x-[200px] sm:space-x-[120px] space-x-[25px]">
         <div className="my-3"></div>
@@ -89,7 +88,7 @@ const ReportDialog = ({ onClose }) => {
           Recently Generated Reports
         </div>
         <div>
-          <Button2 onClick={handleClose} className={'bg-transparent'}>
+          <Button2 onClick={handleClose} className={"bg-transparent"}>
             <Image src={CloseIcon} alt="Close Icon" width={50} height={50} />
           </Button2>
         </div>
@@ -101,7 +100,14 @@ const ReportDialog = ({ onClose }) => {
         <Button2
           onClick={() => paginate(currentPage - 1)}
           disabled={currentPage === 1}
+          className={"flex flex-row "}
         >
+          <Image
+            src={PreviousArrow}
+            alt="Previous Arrow"
+            width={20}
+            height={20}
+          />
           Previous
         </Button2>
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
@@ -119,8 +125,10 @@ const ReportDialog = ({ onClose }) => {
         <Button2
           onClick={() => paginate(currentPage + 1)}
           disabled={currentPage === totalPages}
+          className={"flex flex-row "}
         >
           Next
+          <Image src={NextArrow} alt="Next Arrow" width={20} height={20} />
         </Button2>
 
         <div className="flex flex-row pl-9 space-x-3">
